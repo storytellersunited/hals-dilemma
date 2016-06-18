@@ -24,7 +24,7 @@ dialogue = {
       [1, "Where do you want to go next?"]
     ],
     "comet": [
-      [2, "What a beautiful comet! Interesting that it's headed towards Earth."]
+      [2, "What a beautiful star cluster! This is where Mars used to be. Interesting..."]
     ]
 };
 
