@@ -1,5 +1,11 @@
 // paste code here
 //
+function talk(speech){
+	var msg = new SpeechSynthesisUtterance(speech);
+msg.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == 'Google UK English Male'; })[0];
+speechSynthesis.speak(msg);
+}
+
 destinations = {};
 destinations.horseHeadNebula = [85.2458, -2.4583];
 destinations.saturn = [HMS(16,42,12.38), DMS(-20, 26, 13.5)];
