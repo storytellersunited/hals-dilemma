@@ -3,7 +3,8 @@
 function talk(speech, voice){
   console.log('Talking: ' + speech);
 	var msg = new SpeechSynthesisUtterance(speech);
-  msg.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == voice; })[0];
+  var voice = speechSynthesis.getVoices()[voice];
+  msg.voice = voice;
   speechSynthesis.speak(msg);
 }
 

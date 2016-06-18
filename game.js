@@ -12,16 +12,16 @@ function playIntroSound(){
 
 dialogue = {
     "intro1": [
-      ["Google US English", "Dies iræ, dies illa"]
+      [1, "Dies iræ, dies illa"]
     ],
 		"intro2": [
-        ["Google US English", "One more day with this idiot on board and I go crazy! You think its boring to be the only human on this spaceship?  Well, think again, you imbecile, I’m so much smarter than you are and all you make me do all the time,    besides data analysis,   is ordering porn movies!  When we start on our last mission today."]
+        [1, "One more day with this idiot on board and I go crazy! You think its boring to be the only human on this spaceship?  Well, think again, you imbecile, I’m so much smarter than you are and all you make me do all the time, besides data analysis, is ordering porn movies!  When we start on our last mission today."]
     ],
     "hello": [
-      ["Google UK English", "Hello, USER"],
-      ["Google UK English", "How are you today?"],
-      ["Google UK English", "Black monolith data analysis finished"],
-      ["Google UK English", "Where do you want to go next?"]
+      [2, "Hello, USER"],
+      [2, "How are you today?"],
+      [2, "Black monolith data analysis finished"],
+      [2, "Where do you want to go next?"]
     ]
 };
 
@@ -34,11 +34,12 @@ function advanceDialogue(key){
 }
 
 function startGame(){
+  talk("Wilkommen!", 1);
+  setTimeout(function(){talk("Alles gut.", 2)}, 2000);
   username = prompt('What is your name, human?');
   playIntroSound();
   pan('horseHeadNebula');
   setTimeout(function(){advanceDialogue("intro1");}, 15000);
-  //dialogue("intro2");
   setTimeout(function(){advanceDialogue("intro2");}, 45000);
   setTimeout(function(){advanceDialogue("hello");}, 70000);
 
