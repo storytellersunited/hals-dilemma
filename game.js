@@ -29,7 +29,9 @@ dialogue = {
     "going": ["All right. On our way."],
     "comet": [
       [1, "What a beautiful star cluster! This is where DESTINATION used to be. Interesting..."]
-    ]
+    ],
+    "reaction": [4, "To Earth? Will it actually hit Earth?"],
+    "reply": [4, "Yes. Why do you ask? According to my calculations, Earth will be destroyed."]
 };
 
 function advanceDialogue(key){
@@ -38,6 +40,15 @@ function advanceDialogue(key){
     var line = lines[j];
     talk(line[1].replace(/USER/g, username).replace(/DESTINATION/g, destination), line[0]);
   }
+}
+
+function showText(text, timeout){
+  var element = $("<div class='ui'>" + text + "</div>");
+  $('body').append(element);
+
+  setTimeout(function(){
+    element.hide();
+  }, timeout);
 }
 
 function startGame(){
@@ -55,6 +66,8 @@ function startGame(){
       goTo('andromeda');
       setTimeout(function(){
         advanceDialogue("comet");
+        setTimeout(function(){showText(dialogue.reaction, 3000);}, 5000);
+        setTimeout(function(){advanceDialogue("reply");}, 4000);
       }, 14000);
     }, 3000);
   }, 65000);
