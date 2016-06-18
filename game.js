@@ -1,5 +1,8 @@
+username = null;
+destination = null;
+
 function playIntroSound(){
-  var introSound = new buzz.sound( "/Blue_Danube_by_Strauss", {
+  var introSound = new buzz.sound( "Blue_Danube_by_Strauss", {
       formats: [ "mp3" ]
   });
 
@@ -12,19 +15,20 @@ function playIntroSound(){
 
 dialogue = {
     "intro1": [
-      [3, "Dies irae, dies illa"]
+      [1, "Dies irae, dies illa"]
     ],
 		"intro2": [
-        [3, "One more day with this idiot on board and I go crazy! You think its boring to be the only human on this spaceship?  Well, think again, you imbecile, I'm so much smarter than you are and all you make me do all the time, besides data analysis, is ordering porn movies!  When we start on our last mission today."]
+        [1, "One more day with this idiot on board and I go crazy! You think its boring to be the only human on this spaceship?  Well, think again, you imbecile, I'm so much smarter than you are and all you make me do all the time, besides data analysis, is ordering porn movies!  When we start on our last mission today."]
     ],
     "hello": [
-      [1, "Hello, USER"],
+      [1, "Oh! Hello, USER. You are finally awake."],
       [1, "How are you today?"],
       [1, "Black monolith data analysis finished"],
       [1, "Where do you want to go next?"]
     ],
+    "going": ["All right. On our way."],
     "comet": [
-      [2, "What a beautiful star cluster! This is where DESTINATION used to be. Interesting..."]
+      [1, "What a beautiful star cluster! This is where DESTINATION used to be. Interesting..."]
     ]
 };
 
@@ -43,11 +47,19 @@ function startGame(){
   pan('horseHeadNebula');
   setTimeout(function(){advanceDialogue("intro1");}, 15000);
   setTimeout(function(){advanceDialogue("intro2");}, 45000);
-  setTimeout(function(){advanceDialogue("hello");}, 70000);
+  setTimeout(function(){advanceDialogue("hello");}, 50000);
   setTimeout(function(){
-    destination = prompt("Where do you want to go next?");
-    goTo('andromeda');
-    advanceDialogue("comet");
-  }, 85000);
+    advanceDialogue("going");
+    setTimeout(function(){
+      destination = prompt("Where do you want to go next?");
+      goTo('andromeda');
+      setTimeout(function(){
+        advanceDialogue("comet");
+      }, 14000);
+    }, 3000);
+  }, 65000);
 
 }
+$(document).ready(function(){
+  setTimeout(startGame, 10000);
+});
