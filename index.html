@@ -1,20 +1,25 @@
 <html>
-  <script src="http://www.worldwidetelescope.org/scripts/wwtsdk.aspx" type="text/javascript">
-  </script>
-  <script>
-    var wwt;
 
-    function initialize() {
-      wwt = wwtlib.WWTControl.initControl("WWTCanvas");
-      wwtControl.add_ready(wwtReady);
-    }
+  <head>
+    <link href="/styles.css" media="all" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+    <script src="http://www.worldwidetelescope.org/scripts/wwtsdk.aspx" type="text/javascript">
+    </script>
+    <script>
+      var wwt;
 
-    function wwtReady() {
-         wwtControl.loadImageCollection("http://www.worldwidetelescope.org/COMPLETE/wwtcomplete.wtml");
-         // Put your custom initialization code here.
-     }
-  </script>
+      function initialize() {
+        wwt = wwtlib.WWTControl.initControl("WWTCanvas");
+        wwt.add_ready(wwtReady);
+      }
+
+      function wwtReady() {
+           wwt.loadImageCollection("http://www.worldwidetelescope.org/COMPLETE/wwtcomplete.wtml");
+           // Put your custom initialization code here.
+       }
+    </script>
+  </head>
   <body onload="initialize()">
-       <div id="WWTCanvas" style="width:750px; height:750px; border-style: none; border-width: 0px;"></div>
+       <div id="WWTCanvas" style="width:750px; height:550px;"></div>
    </body>
 </html>
