@@ -26,12 +26,10 @@ dialogue = {
       [1, "Black monolith data analysis finished"],
       [1, "Where do you want to go next?"]
     ],
-    "going": ["All right. On our way."],
-    "comet": [
-      [1, "What a beautiful star cluster! This is where DESTINATION used to be. Interesting..."]
-    ],
-    "reaction": [4, "To Earth? Will it actually hit Earth?"],
-    "reply": [4, "Yes. Why do you ask? According to my calculations, Earth will be destroyed."]
+    "going": [[1, "All right. On our way."]],
+    "comet": [[1, "What a beautiful star cluster! This is where DESTINATION used to be. Interesting..."]],
+    "reaction": [[null, "Will it be a danger to Earth?"]],
+    "reply": [[1, "Yes. Why do you ask? According to my calculations, Earth will be destroyed."]]
 };
 
 function advanceDialogue(key){
@@ -60,16 +58,23 @@ function startGame(){
   setTimeout(function(){advanceDialogue("intro2");}, 45000);
   setTimeout(function(){advanceDialogue("hello");}, 50000);
   setTimeout(function(){
-    advanceDialogue("going");
     setTimeout(function(){
       destination = prompt("Where do you want to go next?");
+      advanceDialogue("going");
       goTo('andromeda');
       setTimeout(function(){
         advanceDialogue("comet");
-        setTimeout(function(){showText(dialogue.reaction, 3000);}, 5000);
-        setTimeout(function(){advanceDialogue("reply");}, 4000);
+        setTimeout(function(){
+          showText(dialogue.reaction[0][1], 5000);
+          setTimeout(function(){
+            advanceDialogue("reply");
+            setTimeout(function(){
+              $('canvas').fadeOut(6000);
+            }, 8000);
+          }, 5000);
+        }, 5000);
       }, 14000);
-    }, 3000);
+    }, 9000);
   }, 65000);
 
 }
