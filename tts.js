@@ -1,6 +1,7 @@
 // paste code here
 //
 function talk(speech, voice){
+  console.log('Talking: ' + speech);
 	var msg = new SpeechSynthesisUtterance(speech);
   msg.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == voice; })[0];
   speechSynthesis.speak(msg);
