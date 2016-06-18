@@ -1,0 +1,20 @@
+<html>
+  <script src="http://www.worldwidetelescope.org/scripts/wwtsdk.aspx" type="text/javascript">
+  </script>
+  <script>
+    var wwt;
+
+    function initialize() {
+      wwt = wwtlib.WWTControl.initControl("WWTCanvas");
+      wwtControl.add_ready(wwtReady);
+    }
+
+    function wwtReady() {
+         wwtControl.loadImageCollection("http://www.worldwidetelescope.org/COMPLETE/wwtcomplete.wtml");
+         // Put your custom initialization code here.
+     }
+  </script>
+  <body onload="initialize()">
+       <div id="WWTCanvas" style="width:750px; height:750px; border-style: none; border-width: 0px;"></div>
+   </body>
+</html>
